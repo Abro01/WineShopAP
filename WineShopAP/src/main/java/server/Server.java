@@ -62,7 +62,7 @@ public class Server {
 
 
 
-    public void ConnessioneDB()
+    /*public void ConnessioneDB()
     {
         try {
 
@@ -83,7 +83,7 @@ public class Server {
         } catch (Exception e) {
                 System.err.println(e);
         }
-    }
+    }*/
 
     public static void main(String[] args)
     {
@@ -91,6 +91,6 @@ public class Server {
         //s.attendi();
         //s.Comunica();
 
-        s.ConnessioneDB();
+        //s.ConnessioneDB();
     }
 }

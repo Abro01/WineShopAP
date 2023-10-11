@@ -6,10 +6,11 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
-
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="346.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -17,27 +18,32 @@
          <children>
             <AnchorPane layoutX="13.0" layoutY="14.0" prefHeight="517.0" prefWidth="320.0">
                <children>
-                  <Label layoutX="96.0" layoutY="55.0" text="Sign In Account" textFill="#2a827b">
+                  <Label layoutX="96.0" layoutY="56.0" text="Sign In Account" textFill="#e90000">
                      <font>
                         <Font name="Gill Sans MT" size="20.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="51.0" layoutY="127.0" prefHeight="31.0" prefWidth="217.0" promptText="Username" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
-                  <PasswordField layoutX="51.0" layoutY="176.0" prefHeight="31.0" prefWidth="217.0" promptText="Password" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
+                  <TextField fx:id="Login_Username" layoutX="51.0" layoutY="127.0" prefHeight="31.0" prefWidth="217.0" promptText="Username" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
+                  <PasswordField fx:id="Login_Password" layoutX="51.0" layoutY="176.0" prefHeight="31.0" prefWidth="217.0" promptText="Password" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
                   <TextField layoutX="51.0" layoutY="176.0" prefHeight="31.0" prefWidth="217.0" promptText="Password" stylesheets="@../../Design/Design_LoginRegRecPass.css" visible="false" />
-                  <CheckBox layoutX="51.0" layoutY="220.0" mnemonicParsing="false" text="Mostra Password" textFill="#2a827b" />
-                  <Button layoutX="51.0" layoutY="266.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="217.0" styleClass="btn" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Login" textFill="#dbdbdb" />
-                  <Label layoutX="64.0" layoutY="313.0" prefHeight="17.0" prefWidth="100.0" text="Password domenticata?" textFill="#2a827b">
+                  <CheckBox fx:id="Login_Mostra" layoutX="51.0" layoutY="220.0" mnemonicParsing="false" styleClass="label" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Mostra Password" textFill="#2a827b" />
+                  <Button fx:id="Login_BtnLogin" layoutX="51.0" layoutY="259.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" styleClass="btn" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Login" textFill="#dbdbdb" />
+                  <Label layoutX="66.0" layoutY="298.0" prefHeight="17.0" prefWidth="100.0" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Password domenticata?" textFill="#2a8078">
                      <font>
                         <Font name="Gill Sans MT" size="10.0" />
                      </font>
                   </Label>
-                  <Hyperlink layoutX="164.0" layoutY="312.0" text="Recupera password">
+                  <Hyperlink fx:id="Login_Link" layoutX="166.0" layoutY="297.0" styleClass="link" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Cambia password" textFill="#2d0000" underline="true">
                      <font>
                         <Font name="Gill Sans MT" size="10.0" />
                      </font>
                   </Hyperlink>
-                  <Button layoutX="51.0" layoutY="338.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="217.0" styleClass="btn" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Registrati" textFill="#2a827b" />
+                  <Button fx:id="Login_BtnReg" layoutX="51.0" layoutY="324.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" styleClass="btn" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Registrati" textFill="#2a827b" />
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="60.0" layoutY="397.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Design/Loghi/Logo.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
             <AnchorPane layoutX="13.0" layoutY="14.0" prefHeight="517.0" prefWidth="320.0" visible="false">
@@ -47,39 +53,79 @@
                         <Font name="Gill Sans MT" size="20.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="51.0" layoutY="292.0" prefHeight="31.0" prefWidth="217.0" promptText="Username" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
-                  <PasswordField layoutX="51.0" layoutY="331.0" prefHeight="31.0" prefWidth="217.0" promptText="Password" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
-                  <CheckBox layoutX="51.0" layoutY="407.0" mnemonicParsing="false" text="Mostra Password" textFill="#2a827b" />
-                  <Button layoutX="51.0" layoutY="432.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" styleClass="btn" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Registrati" textFill="#dbdbdb" />
-                  <Button layoutX="51.0" layoutY="471.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" styleClass="btn" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Login" textFill="#2a827b" />
-                  <PasswordField layoutX="51.0" layoutY="369.0" prefHeight="31.0" prefWidth="217.0" promptText="Conferma password" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
-                  <TextField layoutX="51.0" layoutY="251.0" prefHeight="31.0" prefWidth="217.0" promptText="Email" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
-                  <TextField layoutX="51.0" layoutY="213.0" prefHeight="31.0" prefWidth="217.0" promptText="Codice fiscale" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
-                  <TextField layoutX="51.0" layoutY="173.0" prefHeight="31.0" prefWidth="217.0" promptText="Telefono" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
-                  <TextField layoutX="51.0" layoutY="134.0" prefHeight="31.0" prefWidth="217.0" promptText="Indirizzo residenza" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
-                  <TextField layoutX="51.0" layoutY="93.0" prefHeight="31.0" prefWidth="217.0" promptText="Cognome" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
-                  <TextField layoutX="51.0" layoutY="53.0" prefHeight="31.0" prefWidth="217.0" promptText="Nome" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
+                  <TextField fx:id="RegAmmImp_Username" layoutX="51.0" layoutY="292.0" prefHeight="31.0" prefWidth="217.0" promptText="Username" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
+                  <PasswordField fx:id="RegAmmImp_Password" layoutX="51.0" layoutY="331.0" prefHeight="31.0" prefWidth="217.0" promptText="Password" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
+                  <CheckBox fx:id="RegAmmImp_Mostra" layoutX="51.0" layoutY="407.0" mnemonicParsing="false" styleClass="label" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Mostra Password" textFill="#2a827b" />
+                  <Button fx:id="RegAmmImp_BtnReg" layoutX="51.0" layoutY="432.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" styleClass="btn" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Registrati" textFill="#dbdbdb" />
+                  <Button fx:id="RegAmmImp_BtnLogin" layoutX="51.0" layoutY="471.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" styleClass="btn" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Login" textFill="#2a827b" />
+                  <PasswordField fx:id="RegAmmImp_ConfPass" layoutX="51.0" layoutY="369.0" prefHeight="31.0" prefWidth="217.0" promptText="Conferma password" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
+                  <TextField fx:id="RegAmmImp_Email" layoutX="51.0" layoutY="251.0" prefHeight="31.0" prefWidth="217.0" promptText="Email" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
+                  <TextField fx:id="RegAmmImp_CF" layoutX="51.0" layoutY="213.0" prefHeight="31.0" prefWidth="217.0" promptText="Codice fiscale" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
+                  <TextField fx:id="RegAmmImp_Tel" layoutX="51.0" layoutY="173.0" prefHeight="31.0" prefWidth="217.0" promptText="Telefono" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
+                  <TextField fx:id="RegAmmImp_Ind" layoutX="51.0" layoutY="134.0" prefHeight="31.0" prefWidth="217.0" promptText="Indirizzo residenza" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
+                  <TextField fx:id="RegAmmImp_Cog" layoutX="51.0" layoutY="93.0" prefHeight="31.0" prefWidth="217.0" promptText="Cognome" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
+                  <TextField fx:id="RegAmmImp_Nome" layoutX="51.0" layoutY="53.0" prefHeight="31.0" prefWidth="217.0" promptText="Nome" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
+                  <ImageView fitHeight="59.0" fitWidth="30.0" layoutX="15.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Design/Loghi/Logo_Calice.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="59.0" fitWidth="30.0" layoutX="276.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Design/Loghi/Logo_Calice.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="13.0" layoutY="14.0" prefHeight="517.0" prefWidth="320.0" visible="false">
+            <AnchorPane layoutX="13.0" layoutY="15.0" prefHeight="517.0" prefWidth="320.0" visible="false">
                <children>
                   <Label layoutX="96.0" layoutY="14.0" text="Sign Up Account" textFill="#2a827b">
                      <font>
                         <Font name="Gill Sans MT" size="20.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="51.0" layoutY="292.0" prefHeight="31.0" prefWidth="217.0" promptText="Username" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
-                  <PasswordField layoutX="51.0" layoutY="331.0" prefHeight="31.0" prefWidth="217.0" promptText="Password" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
-                  <CheckBox layoutX="51.0" layoutY="407.0" mnemonicParsing="false" text="Mostra Password" textFill="#2a827b" />
-                  <Button layoutX="51.0" layoutY="432.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" styleClass="btn" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Registrati" textFill="#dbdbdb" />
-                  <Button layoutX="51.0" layoutY="471.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" styleClass="btn" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Login" textFill="#2a827b" />
-                  <PasswordField layoutX="51.0" layoutY="369.0" prefHeight="31.0" prefWidth="217.0" promptText="Conferma password" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
-                  <TextField layoutX="51.0" layoutY="251.0" prefHeight="31.0" prefWidth="217.0" promptText="Email" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
-                  <TextField layoutX="51.0" layoutY="213.0" prefHeight="31.0" prefWidth="217.0" promptText="Codice fiscale" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
-                  <TextField layoutX="51.0" layoutY="173.0" prefHeight="31.0" prefWidth="217.0" promptText="Telefono" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
-                  <TextField layoutX="51.0" layoutY="134.0" prefHeight="31.0" prefWidth="217.0" promptText="Indirizzo consegna" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
-                  <TextField layoutX="51.0" layoutY="93.0" prefHeight="31.0" prefWidth="217.0" promptText="Cognome" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
-                  <TextField layoutX="51.0" layoutY="53.0" prefHeight="31.0" prefWidth="217.0" promptText="Nome" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
+                  <TextField fx:id="RegUser_Username" layoutX="51.0" layoutY="292.0" prefHeight="31.0" prefWidth="217.0" promptText="Username" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
+                  <PasswordField fx:id="RegUser_Password" layoutX="51.0" layoutY="331.0" prefHeight="31.0" prefWidth="217.0" promptText="Password" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
+                  <CheckBox fx:id="RegUser_Mostra" layoutX="51.0" layoutY="407.0" mnemonicParsing="false" styleClass="label" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Mostra Password" textFill="#2a827b" />
+                  <Button fx:id="RegUser_BtnReg" layoutX="51.0" layoutY="432.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" styleClass="btn" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Registrati" textFill="#dbdbdb" />
+                  <Button fx:id="RegUser_BtnLogin" layoutX="51.0" layoutY="471.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" styleClass="btn" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Login" textFill="#2a827b" />
+                  <PasswordField fx:id="RegUser_ConfPass" layoutX="51.0" layoutY="369.0" prefHeight="31.0" prefWidth="217.0" promptText="Conferma password" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
+                  <TextField fx:id="RegUser_Email" layoutX="51.0" layoutY="251.0" prefHeight="31.0" prefWidth="217.0" promptText="Email" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
+                  <TextField fx:id="RegUser_CF" layoutX="51.0" layoutY="213.0" prefHeight="31.0" prefWidth="217.0" promptText="Codice fiscale" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
+                  <TextField fx:id="RegUser_Tel" layoutX="51.0" layoutY="173.0" prefHeight="31.0" prefWidth="217.0" promptText="Telefono" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
+                  <TextField fx:id="RegUser_Ind" layoutX="51.0" layoutY="134.0" prefHeight="31.0" prefWidth="217.0" promptText="Indirizzo consegna" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
+                  <TextField fx:id="RegUser_Cog" layoutX="51.0" layoutY="93.0" prefHeight="31.0" prefWidth="217.0" promptText="Cognome" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
+                  <TextField fx:id="RegUser_Nome" layoutX="51.0" layoutY="53.0" prefHeight="31.0" prefWidth="217.0" promptText="Nome" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
+                  <ImageView fitHeight="59.0" fitWidth="30.0" layoutX="14.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Design/Loghi/Logo_Calice.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="59.0" fitWidth="30.0" layoutX="276.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Design/Loghi/Logo_Calice.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="13.0" layoutY="18.0" prefHeight="517.0" prefWidth="320.0" visible="false">
+               <children>
+                  <Label layoutX="91.0" layoutY="56.0" text="Nuova Password" textFill="#2a827b">
+                     <font>
+                        <Font name="Gill Sans MT" size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="CambioPass_Username" layoutX="51.0" layoutY="129.0" prefHeight="31.0" prefWidth="217.0" promptText="Username" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
+                  <PasswordField fx:id="CambioPass_Password" layoutX="51.0" layoutY="178.0" prefHeight="31.0" prefWidth="217.0" promptText="Nuova password" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
+                  <Button fx:id="CambioPass_Btn" layoutX="51.0" layoutY="305.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" styleClass="btn" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Cambia Password" textFill="#9f0000" />
+                  <Button fx:id="CambioPass_BtnIndietro" layoutX="51.0" layoutY="344.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" styleClass="btn" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Indietro" textFill="#2a827b" />
+                  <PasswordField fx:id="CambioPass_ConfPass" layoutX="51.0" layoutY="227.0" prefHeight="31.0" prefWidth="217.0" promptText="Conferma password" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
+                  <CheckBox fx:id="CambioPass_Mostra" layoutX="51.0" layoutY="272.0" mnemonicParsing="false" styleClass="label" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Mostra Password" textFill="#2a827b" />
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="60.0" layoutY="412.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Design/Loghi/Logo.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
          </children>
