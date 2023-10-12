@@ -17,6 +17,12 @@
     -fx-background-color: #dbdbdb;
     -fx-background-radius: 20px;
     -fx-border-radius: 20px;
+    -fx-text-fill: linear-gradient(to bottom right, #e90000, #600101);
+}
+
+.btn:pressed{
+    -fx-background-color: linear-gradient(to bottom right, #e90000, #600101);
+    -fx-text-fill: white;
 }
 
 .textfield{
