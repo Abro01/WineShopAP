@@ -2,7 +2,6 @@ package server;
 
 import java.io.*;
 import java.net.*;
-import java.sql.*;
 
 public class Server {
 

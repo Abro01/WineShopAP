@@ -1,4 +1,4 @@
-module wineshop.client.wineshopap {
+module wineshop.client {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
