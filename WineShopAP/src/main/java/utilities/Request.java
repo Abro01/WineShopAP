@@ -1,30 +1,36 @@
 package utilities;
 
 import java.io.Serializable;
+public class Request implements Serializable{
+    private static final long serialVersionUID = 1L;
+    /**
+     * the request header
+     */
+    private final int header;
+    /**
+     * the request payload type
+     */
+    private final Class<?> payloadType;
+    /**
+     * the request payload
+     */
+    private final Object payload;
 
-//crea la richiesta per il server
-public class Request<E> implements Serializable{
-    private static final long UIDSerialVersion = 6529685098267736690L;
-
-    //richiesta
-    private final Operation richiesta;
-
-    private final E param;
-
-
-    public Request(Operation o, E param) {
-        this.param = param;
-        this.richiesta = o;
+    public Request(int header, Object payload) {
+        this.header = header;
+        this.payload = payload;
+        this.payloadType = payload.getClass();
     }
 
-    public Request(Operation o) {
-        this.richiesta = o;
-        param = null;
+    public int getHeader() {
+        return header;
     }
 
-    public Operation getRichiesta() { return richiesta; }
+    public Class<?> getPayloadType() {
+        return payloadType;
+    }
 
-    public E getParam() {
-        return this.param;
+    public Object getPayload() {
+        return payload;
     }
 }
