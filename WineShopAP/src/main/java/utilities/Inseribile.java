@@ -3,7 +3,7 @@ package utilities;
 public interface Inseribile {
 
     String[] getAttributi();
-    String[] getNomeIstanza();
+    String getNomeIstanza();
     String[] getValori();
-    String[] getPK();
+    String getPK();
 }

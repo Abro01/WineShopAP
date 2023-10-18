@@ -1,16 +1,26 @@
 package model;
 
-public class Impiegati_Amministratori {
-    String nome, cognome, cf, email, telefono, indirizzo_residenza, username, password;
+import utilities.Rimovibile;
+import utilities.Inseribile;
 
-    public Impiegati_Amministratori(String nome, String cognome, String cf, String email, String telefono, String indirizzo_residenza, String username, String password) {
+import java.io.Serializable;
+public class Impiegati_Amministratori implements Inseribile, Rimovibile, Serializable{
+    private static final long serialVersionUID = 1L;
+    private String username, nome, cognome, cf, email, telefono, indirizzo_residenza, password;
+
+    public Impiegati_Amministratori(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public Impiegati_Amministratori(String username, String nome, String cognome, String cf, String email, String telefono, String indirizzo_residenza, String password) {
+        this.username = username;
         this.nome = nome;
         this.cognome = cognome;
         this.cf = cf;
         this.email = email;
         this.telefono = telefono;
         this.indirizzo_residenza = indirizzo_residenza;
-        this.username = username;
         this.password = password;
     }
 
@@ -76,5 +86,34 @@ public class Impiegati_Amministratori {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String[] getAttributi() {
+        return new String[]{"Username", "Password", "Email", "CodiceFiscale"};
+    }
+
+    @Override
+    public String getNomeIstanza() {
+        return "AmministratoreImpiegato";
+    }
+
+    @Override
+    public String[] getValori() {
+        return new String[]{"'" + this.cf + "'", "'" + this.username + "'", "'" + this.password + "'", "'" + this.email + "'"};
+    }
+
+    @Override
+    public String getPK() {
+        return "Username";
+    }
+
+    @Override
+    public String getValorePK() {
+        return "'" + this.getUsername() + "'";
+    }
+
+    public String toString() {
+        return "Login: " + this.username + ", password: " + this.password + ", email: " + this.email + ", codice fiscale: " + this.cf;
     }
 }

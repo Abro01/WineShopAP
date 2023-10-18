@@ -116,12 +116,12 @@ public class SQLTransaltor {
             case Costanti.VendiVino ->
             {
                 Ordini o = (Ordini) model;
-                query += "UPDATE vini SET quantita = quantita - " + o.getQuantita_vini() + " WHERE vini.id = '" + idvini + "';";
+                query += "UPDATE vini SET quantita = quantita - " + o.getQuantita_vini() + " WHERE vini.id = '" + /*idvini +*/ "';";
             }
 
             case Costanti.getOnlineVenditori ->
             {
-                query += "SELECT * FROM"
+                query += "SELECT * FROM";
             }
         }
         return query;

@@ -1,7 +1,17 @@
 package model;
 
-public class Utenti {
-    String nome, cognome, cf, email, telefono, indirizzo_consegna, username, password;
+import utilities.Rimovibile;
+import utilities.Inseribile;
+
+import java.io.Serializable;
+public class Utenti implements Inseribile, Rimovibile, Serializable{
+    private static final long serialVersionUID = 1L;
+    private String nome, cognome, cf, email, telefono, indirizzo_consegna, username, password;
+
+    public Utenti(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 
     public Utenti(String nome, String cognome, String cf, String email, String telefono, String indirizzo_consegna, String username, String password) {
         this.nome = nome;
@@ -76,5 +86,33 @@ public class Utenti {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String[] getAttributi() {
+        return new String[]{"Username", "Password", "Email", "CodiceFiscale"};
+    }
+
+    @Override
+    public String getNomeIstanza() {
+        return "Cliente";
+    }
+
+    @Override
+    public String[] getValori() {
+        return new String[]{"'" + this.cf + "'", "'" + this.username + "'", "'" + this.password + "'", "'" + this.email + "'"};
+    }
+
+    @Override
+    public String getPK() {
+        return "Username";
+    }
+
+    @Override
+    public String getValorePK() {
+        return "'" + this.getUsername() + "'";
+    }
+
+    public String toString() {
+        return "Login: " + this.username + ", password: " + this.password + ", email: " + this.email + ", codice fiscale: " + this.cf;
     }
 }
