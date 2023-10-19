@@ -62,13 +62,6 @@ public class ConfigurazioneServer {
 
     @Override
     public String toString() {
-        return "ConfigurazioneServer{" +
-                "DBHost='" + DBHost + '\'' +
-                ", ServerPort=" + ServerPort +
-                ", DBUser='" + DBUser + '\'' +
-                ", DBPassword='" + DBPassword + '\'' +
-                ", DBName='" + DBName + '\'' +
-                ", DBPort=" + DBPort +
-                '}';
+        return "ConfigurazioneServer[" + "DBHost = '" + DBHost + "', ServerPort = '" + ServerPort + "', DBUser = '" + DBUser + "', DBPassword = '" + DBPassword + "', DBName = '" + DBName + "', DBPort = '" + DBPort + "']";
     }
 }

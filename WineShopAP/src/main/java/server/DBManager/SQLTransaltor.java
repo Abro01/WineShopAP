@@ -33,24 +33,24 @@ public class SQLTransaltor {
 
         switch (request.getHeader())
         {
-            case Costanti.LoginCliente ->
+            case Costanti.Login ->
             {
                 query += "SELECT * " +
-                         "FROM utenti " +
-                         "WHERE Username = '" + ((Utenti) model).getUsername() + "' AND Passwrod = 'password'; " +
+                         "FROM amministratore " +
+                         "WHERE Username = '" + ((Utenti) model).getUsername() + "' AND Passwrod = 'wineshop'; " +
                          "UPDATE utenti SET Online = 1 " +
                          "WHERE Username = '" + ((Utenti) model).getUsername() + "';";
             }
 
             case Costanti.Logout ->
             {
-                query += "UPDATE utenti SET LastLogin = '" + LocalDateTime.now().format(dateTimeFormatter) + "' " +
+                query += "UPDATE amministratori SET LastLogin = '" + LocalDateTime.now().format(dateTimeFormatter) + "' " +
                         "WHERE Username = '" + ((Utenti) model).getUsername() + "'; " +
-                        "UPDATE utenti SET Online = 0 " +
+                        "UPDATE amministratori SET Online = 0 " +
                         "WHERE Username = '" + ((Utenti) model).getUsername() + "';";
             }
 
-            case Costanti.AddWine ->
+            /*case Costanti.AddWine ->
             {
                 Inseribile ModelInseribile = (Inseribile) model;
 
@@ -116,14 +116,40 @@ public class SQLTransaltor {
             case Costanti.VendiVino ->
             {
                 Ordini o = (Ordini) model;
-                query += "UPDATE vini SET quantita = quantita - " + o.getQuantita_vini() + " WHERE vini.id = '" + /*idvini +*/ "';";
+                query += "UPDATE vini SET quantita = quantita - " + o.getQuantita_vini() + " WHERE vini.id = '" + /*idvini + "';";
             }
 
             case Costanti.getOnlineVenditori ->
             {
                 query += "SELECT * FROM";
-            }
+            }*/
         }
         return query;
+    }
+
+    public Response sqlToResponse(List<Map<String, String>> queryResult) throws SQLToResponseException{
+        Response response = null;
+
+        switch (this.UltimaRichiesta)
+        {
+            case Costanti.Login:
+                if(queryResult.isEmpty())
+                {
+                    response = new Response(Costanti.RichiestaErrata, new PayloadVuoto("Login Errato"));
+                    break;
+                }
+
+                Map<String, String> uRes = queryResult.get(0);
+                Utenti user = new Utenti(uRes.get("username"), uRes.get("cf"), uRes.get("password"), uRes.get("tipo"));
+
+                response = new Response(Costanti.Successo, user);
+                this.UtenteLoggato = user;
+
+                break;
+            default:
+                throw new SQLToResponseException();
+        }
+
+        return response;
     }
 }

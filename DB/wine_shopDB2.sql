@@ -2,17 +2,6 @@ DROP DATABASE IF EXISTS wine_shop;
 CREATE DATABASE wine_shop;
 USE wine_shop;
 
-CREATE TABLE amministratori(
-    CF varchar(17) PRIMARY KEY NOT NULL,
-    Nome varchar(10),
-    Cognome varchar(10),
-    Username varchar(10),
-    Password varchar(10),
-    Email varchar(20),
-    Telefono varchar(10),
-    IndResidenza varchar(30)
-);
-
 CREATE TABLE produttori(
     CF varchar(17) PRIMARY KEY NOT NULL,
     Nome varchar(10),
@@ -21,19 +10,6 @@ CREATE TABLE produttori(
     Telefono varchar(10),
     IndAzienda varchar(30),
     Ruolo ENUM("Fornitore", "Corriere")
-);
-
-CREATE TABLE impiegati(
-    CF varchar(17) PRIMARY KEY NOT NULL,
-    Nome varchar(10),
-    Cognome varchar(10),
-    Username varchar(10),
-    Password varchar(10),
-    Email varchar(20),
-    Telefono varchar(10),
-    IndResidenza varchar(30),
-    CODAmministratore varchar(17),
-    FOREIGN KEY(CODAmministratore) REFERENCES amministratori(CF)
 );
 
 CREATE TABLE vini(
@@ -63,11 +39,12 @@ CREATE TABLE utenti(
 	CF varchar(17) PRIMARY KEY NOT NULL,
     Nome varchar(10),
     Cognome varchar(10),
-    Username varchar(10),
+    Username varchar(10) UNIQUE,
     Password varchar(10),
     Email varchar(20),
     Telefono varchar(10),
-    IndConsegna varchar(30),
+    Indirizzo varchar(30),
+    Tipo ENUM("Cliente", "Impiegato", "Amministratore"),
     Online tinyInt(1),
     LastLogin DATETIME
 );
@@ -91,10 +68,18 @@ CREATE TABLE dettagli_ordini(
 
 CREATE TABLE recensioni(
     ID int PRIMARY KEY NOT NULL AUTO_INCREMENT, 
-    Voto ENUM(1,2,3,4,5),
+    Voto ENUM("1", "2" , "3" , "4", "5"),
     commento varchar(100),
     CODVino int,
-    CODUtente int,
+    CODUtente varchar(17),
+    FOREIGN KEY(CODVino) REFERENCES vini(ID),
+    FOREIGN KEY(CODUtente) REFERENCES utenti(CF)
+);
+
+CREATE TABLE preferiti(
+    ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    CODVino int,
+    CODUtente varchar(17),
     FOREIGN KEY(CODVino) REFERENCES vini(ID),
     FOREIGN KEY(CODUtente) REFERENCES utenti(CF)
 );

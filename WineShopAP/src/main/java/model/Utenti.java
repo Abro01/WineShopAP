@@ -6,22 +6,47 @@ import utilities.Inseribile;
 import java.io.Serializable;
 public class Utenti implements Inseribile, Rimovibile, Serializable{
     private static final long serialVersionUID = 1L;
-    private String nome, cognome, cf, email, telefono, indirizzo_consegna, username, password;
+    private final String username;
+    private String nome, cognome, cf, email, telefono, indirizzo, password, tipo;
 
     public Utenti(String username, String password) {
         this.username = username;
         this.password = password;
     }
 
-    public Utenti(String nome, String cognome, String cf, String email, String telefono, String indirizzo_consegna, String username, String password) {
+    public Utenti(String username, String cf, String password, String tipo) {
+        this.username = username;
+        this.cf = cf;
+        this.password = password;
+        this.tipo = tipo;
+    }
+
+    public Utenti(String username, String nome, String cognome, String cf, String email, String telefono, String indirizzo, String password, String tipo) {
+        this.username = username;
         this.nome = nome;
         this.cognome = cognome;
         this.cf = cf;
         this.email = email;
         this.telefono = telefono;
-        this.indirizzo_consegna = indirizzo_consegna;
-        this.username = username;
+        this.indirizzo = indirizzo;
         this.password = password;
+        this.tipo = tipo;
+    }
+
+    public Utenti(String username) {
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getTipo() {
+        return tipo;
     }
 
     public String getNome() {
@@ -64,42 +89,26 @@ public class Utenti implements Inseribile, Rimovibile, Serializable{
         this.telefono = telefono;
     }
 
-    public String getIndirizzo_consegna() {
-        return indirizzo_consegna;
+    public String getIndirizzo() {
+        return indirizzo;
     }
 
-    public void setIndirizzo_consegna(String indirizzo_consegna) {
-        this.indirizzo_consegna = indirizzo_consegna;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setIndirizzo(String indirizzo) {
+        this.indirizzo = indirizzo;
     }
 
     public String[] getAttributi() {
-        return new String[]{"Username", "Password", "Email", "CodiceFiscale"};
+        return new String[]{"username", "password", "email", "tipo", "cf"};
     }
 
     @Override
     public String getNomeIstanza() {
-        return "Cliente";
+        return "utente";
     }
 
     @Override
     public String[] getValori() {
-        return new String[]{"'" + this.cf + "'", "'" + this.username + "'", "'" + this.password + "'", "'" + this.email + "'"};
+        return new String[]{"'" + this.cf + "'", "'" + this.username + "'", "'" + this.password + "'", "'" + this.tipo + "'", "'" + this.email + "'"};
     }
 
     @Override
@@ -113,6 +122,6 @@ public class Utenti implements Inseribile, Rimovibile, Serializable{
     }
 
     public String toString() {
-        return "Login: " + this.username + ", password: " + this.password + ", email: " + this.email + ", codice fiscale: " + this.cf;
+        return "Login: " + this.username + ", tipo account: " + this.tipo + ", password: " + this.password + ", email: " + this.email + ", codice fiscale: " + this.cf;
     }
 }

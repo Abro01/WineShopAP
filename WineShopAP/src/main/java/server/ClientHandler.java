@@ -17,10 +17,10 @@ public class ClientHandler implements Runnable{
     private final SQLTransaltor transaltor;
     private final DBManager dbManager;
 
-    public ClientHandler(Socket socket, SQLTransaltor transaltor, DBManager dbManager) {
+    public ClientHandler(Socket socket, ConfigurazioneServer conf) {
         this.socket = socket;
-        this.transaltor = transaltor;
-        this.dbManager = dbManager;
+        this.transaltor = new SQLTransaltor();
+        this.dbManager = new DBManager(conf.getDBUser(), conf.getDBPassword());
     }
 
     @Override
@@ -55,7 +55,7 @@ public class ClientHandler implements Runnable{
                     Request request = (Request) in.readObject();
                     if(request.getHeader() == Costanti.CloseConnessione) break;
 
-                    String query = this.transaltor.requestToSql(request);
+                    String query = this.transaltor.RequestToSQL(request);
 
                     System.out.println("Tentativo esecuzione:\n" + query);
 

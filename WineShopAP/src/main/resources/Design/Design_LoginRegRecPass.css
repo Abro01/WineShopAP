@@ -42,3 +42,10 @@
 .link{
     -fx-text-fill: linear-gradient(to bottom right, #600101, #2d0000);
 }
+
+.combo-box{
+    -fx-background-color: trasparent;
+    -fx-border-color: #818181;
+    -fx-border-width: .8px;
+    -fx-border-radius: 3px;
+}
