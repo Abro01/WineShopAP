@@ -7,12 +7,12 @@ import com.google.gson.JsonSyntaxException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 public class ConfigurazioneServer {
-    private final String DBHost;
-    private final int ServerPort;
-    private final String DBUser;
-    private final String DBPassword;
-    private final String DBName;
-    private final int DBPort;
+    private final String DBHost = "localhost";
+    private final int ServerPort = 1234;
+    private final String DBUser ="root";
+    private final String DBPassword = "";
+    private final String DBName = "wine_shop";
+    private final int DBPort = 3306;
 
     public ConfigurazioneServer(String percorso)
     {
@@ -27,12 +27,6 @@ public class ConfigurazioneServer {
         }
 
         assert conf != null;
-        this.DBHost = conf.getDBHost();
-        this.DBName = conf.getDBName();
-        this.DBPassword = conf.getDBPassword();
-        this.ServerPort = conf.getServerPort();
-        this.DBPort = conf.getDBPort();
-        this.DBUser = conf.getDBUser();
 
     }
 

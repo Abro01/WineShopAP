@@ -12,11 +12,12 @@ import utilities.Costanti;
 import utilities.Response;
 
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 import java.util.Objects;
 
 public class LoginController {
-    @FXML
-    private Button Login_BtnLogin;
+    //@FXML
+    //private Button Login_BtnLogin;
 
     @FXML
     private Button Login_BtnReg;
@@ -44,7 +45,7 @@ public class LoginController {
         UtenteLoggato = utente;
     }
 
-    public void OnLogin_BtnRegClick(ActionEvent event) throws Exception {
+    /*public void OnLogin_BtnRegClick(ActionEvent event) throws Exception {
         String username = this.Login_Username.getText();
         String password = this.Login_Password.getText();
 
@@ -88,11 +89,11 @@ public class LoginController {
             if (Objects.equals(UtenteLoggato.getTipo(), "cliente"))
             {
                 /*((HomeCustomerGuiController) controller).setRequestController(this.requestController);
-                ((HomeCustomerGuiController) controller).setLoggedUser(loggedUser);*/
+                ((HomeCustomerGuiController) controller).setLoggedUser(loggedUser);
             } else if (Objects.equals(UtenteLoggato.getTipo(), "amministratore"))
             {
                 /*((HomeVendorGuiController) controller).setRequestController(this.requestController);
-                ((HomeVendorGuiController) controller).setLoggedUser(loggedUser);*/
+                ((HomeVendorGuiController) controller).setLoggedUser(loggedUser);
             }
 
             stage.setTitle(UtenteLoggato.getUsername().toUpperCase() + " - " + UtenteLoggato.getTipo().toUpperCase() + " - WineShop");
@@ -116,15 +117,15 @@ public class LoginController {
         }
     }
 
-    public void OnLogin_BtnRegClick(ActionEvent event) throws IOException{
+    public void OnLogin_BtnRegClick(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Registrazione.fxml"));
         Parent userGui = loader.load();
         Object controller = loader.getController();
         Scene scene = new Scene(userGui);
-        //((SignINController) controller).setRequestController(this.requestController);
+        ((RegistrazioneController) controller).setRequestController(this.requestController);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.show();
-    }
+    }*/
 }

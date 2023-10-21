@@ -35,7 +35,7 @@ public class Client extends Application{
         do
         {
             try {
-                System.out.print("\nControllando la connessione al server...");
+                System.out.print("\nControllando la connessione al server...\n");
                 socket = new Socket(ip, port);
             }catch (Exception e)
             {
@@ -43,7 +43,7 @@ public class Client extends Application{
                 Alert alert = new Alert(AlertType.ERROR, "Controlla la tua connessione a (" + ip + ":" + port + ") e riprova, se il problema persiste, " +
                         "probabilmente il server e' spento.\nUsa un ip e una porta chiamando il programma con --ip=yourip --port=yourport", btn, ButtonType.CANCEL);
 
-                alert.setHeaderText("indisponibilità di ricerca del server");
+                alert.setHeaderText("Indisponibilità di ricerca del server");
                 alert.setTitle("Errore di connessione");
                 alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
                 Optional<ButtonType> result = alert.showAndWait();
@@ -58,20 +58,37 @@ public class Client extends Application{
             }
         }while (socket == null);
 
-        System.out.println("Connesso");
+        System.out.println("Connesso!");
 
         ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
         ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Login_Reg_PassDim.fxml"));
+        FXMLLoader loader = new FXMLLoader(Client.class.getResource("Login.fxml"));
 
-        Parent root = loader.load();
+        /*Parent root = loader.load();
         LoginController controller = loader.getController();
         RequestController requestController = new RequestController(out, in);
-        //controller.set
+        controller.setRequestController(requestController);*/
+        Scene scene = new Scene(loader.load(), 346, 600);
+
+        //primaryStage.getIcons().add(new Image("C:/Users/andre/OneDrive/Documenti/GitHub/WineShopAP/WineShopAP/src/main/resources/Design/Loghi/Logo.png"));
+
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
+        /*final Socket fSock = socket;
+        primaryStage.setOnCloseRequest(event -> {
+            try {
+                //requestController.CloseConnection();
+                fSock.close();
+            } catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        });*/
     }
     public static void main(String[] args)
     {
-
+        launch();
     }
 }
