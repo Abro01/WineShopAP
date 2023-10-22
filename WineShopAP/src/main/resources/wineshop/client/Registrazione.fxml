@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="346.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="white-bg" stylesheets="@../../Design/Design_LoginRegRecPass.css">
@@ -46,7 +45,7 @@
                         <Image url="@../../Design/Loghi/Logo_Calice.png" />
                      </image>
                   </ImageView>
-                  <ComboBox layoutX="51.0" layoutY="293.0" opacity="0.47" prefHeight="31.0" prefWidth="217.0" promptText="Tipologia Account" />
+                  <ComboBox fx:id="Reg_SceltaTipo" layoutX="51.0" layoutY="293.0" opacity="0.47" prefHeight="31.0" prefWidth="217.0" promptText="Tipologia Account" />
                </children>
             </AnchorPane>
          </children>

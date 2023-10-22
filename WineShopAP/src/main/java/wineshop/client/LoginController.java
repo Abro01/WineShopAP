@@ -1,5 +1,9 @@
 package wineshop.client;
 
+import utilities.Costanti;
+import utilities.Response;
+import model.Utenti;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -7,17 +11,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import model.Utenti;
-import utilities.Costanti;
-import utilities.Response;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.Objects;
 
 public class LoginController {
-    //@FXML
-    //private Button Login_BtnLogin;
+    @FXML
+    private Button Login_BtnLogin;
 
     @FXML
     private Button Login_BtnReg;
@@ -33,6 +33,8 @@ public class LoginController {
 
     @FXML
     private TextField Login_Username;
+    @FXML
+    private Label lblLogin;
 
     private RequestController requestController;
     private Utenti UtenteLoggato;
@@ -42,12 +44,13 @@ public class LoginController {
     }
 
     public void setUtenteLoggato(Utenti utente) {
-        UtenteLoggato = utente;
+        this.UtenteLoggato = utente;
     }
 
-    /*public void OnLogin_BtnRegClick(ActionEvent event) throws Exception {
+    public void OnLogin_Login_BtnLogin(ActionEvent event) throws Exception {
         String username = this.Login_Username.getText();
         String password = this.Login_Password.getText();
+        this.lblLogin.setText("");
 
         Response r = this.requestController.makeRequest(Costanti.Login, new Utenti(username, password));
 
@@ -57,6 +60,7 @@ public class LoginController {
             UtenteLoggato = (Utenti) r.getPayload();
         }else {
             System.out.println("Login fallito");
+            this.lblLogin.setText("Login fallito");
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Errore di login");
             alert.setHeaderText(null);
@@ -88,12 +92,12 @@ public class LoginController {
 
             if (Objects.equals(UtenteLoggato.getTipo(), "cliente"))
             {
-                /*((HomeCustomerGuiController) controller).setRequestController(this.requestController);
-                ((HomeCustomerGuiController) controller).setLoggedUser(loggedUser);
+                ((HomeClienteController) controller).setRequestController(this.requestController);
+                ((HomeClienteController) controller).setUtenteLoggato(UtenteLoggato);
             } else if (Objects.equals(UtenteLoggato.getTipo(), "amministratore"))
             {
-                /*((HomeVendorGuiController) controller).setRequestController(this.requestController);
-                ((HomeVendorGuiController) controller).setLoggedUser(loggedUser);
+                ((HomeAdminController) controller).setRequestController(this.requestController);
+                ((HomeAdminController) controller).setUtenteLoggato(UtenteLoggato);
             }
 
             stage.setTitle(UtenteLoggato.getUsername().toUpperCase() + " - " + UtenteLoggato.getTipo().toUpperCase() + " - WineShop");
@@ -103,16 +107,16 @@ public class LoginController {
 
             if (Objects.equals(UtenteLoggato.getTipo(), "cliente"))
             {
-                //((HomeCustomerGuiController) controller).initialize();
+                ((HomeClienteController) controller).initialize();
             } else if (Objects.equals(UtenteLoggato.getTipo(), "amministratore"))
             {
-                //((HomeVendorGuiController) controller).initialize();
+                ((HomeAdminController) controller).initialize();
             } else if (r.getStatusCode() == Costanti.RichiestaErrata)
             {
-                return;
+                this.lblLogin.setText("Username e/o password errati");
             } else if (r.getStatusCode() == Costanti.ErroriServer)
             {
-                return;
+                this.lblLogin.setText("Server error");
             }
         }
     }
@@ -127,5 +131,5 @@ public class LoginController {
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.show();
-    }*/
+    }
 }

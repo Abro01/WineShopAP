@@ -49,6 +49,11 @@
                         <Font name="Gill Sans MT Bold" size="20.0" />
                      </font>
                   </Label>
+                  <Label fx:id="lblLogin" layoutX="96.0" layoutY="413.0" prefHeight="17.0" prefWidth="127.0" stylesheets="@../../Design/Design_LoginRegRecPass.css" textFill="#2a8078">
+                     <font>
+                        <Font name="Gill Sans MT" size="10.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </children>
