@@ -1,8 +1,9 @@
 package utilities;
 
-import java.io.Serializable;
 import java.io.Serial;
+import java.io.Serializable;
 public class Response implements Serializable{
+    @Serial
     private static final long serialVersionUID = 1L;
     /**
      * the response status code
@@ -16,22 +17,21 @@ public class Response implements Serializable{
      * the response payload
      */
     private final Object payload;
-
     public Response(int statusCode, Object payload) {
         this.statusCode = statusCode;
-        this.payload = payload;
         this.payloadType = payload.getClass();
+        this.payload = payload;
     }
 
     public int getStatusCode() {
-        return statusCode;
-    }
-
-    public Class<?> getPayloadType() {
-        return payloadType;
+        return this.statusCode;
     }
 
     public Object getPayload() {
-        return payload;
+        return this.payload;
+    }
+
+    public Class<?> getPayloadType() {
+        return this.payloadType;
     }
 }

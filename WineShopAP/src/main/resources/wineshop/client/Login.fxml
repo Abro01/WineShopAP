@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="346.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="346.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wineshop.client.LoginController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="white-bg" stylesheets="@../../Design/Design_LoginRegRecPass.css">
          <children>
@@ -27,7 +27,7 @@
                   <PasswordField fx:id="Login_Password" layoutX="56.0" layoutY="215.0" prefHeight="31.0" prefWidth="217.0" promptText="Password" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
                   <TextField layoutX="51.0" layoutY="176.0" prefHeight="31.0" prefWidth="217.0" promptText="Password" stylesheets="@../../Design/Design_LoginRegRecPass.css" visible="false" />
                   <CheckBox fx:id="Login_Mostra" layoutX="57.0" layoutY="267.0" mnemonicParsing="false" styleClass="label" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Mostra Password" textFill="#2a827b" />
-                  <Button fx:id="Login_BtnLogin" layoutX="56.0" layoutY="302.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" styleClass="btn" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Login" textFill="#dbdbdb" />
+                  <Button fx:id="Login_BtnLogin" layoutX="56.0" layoutY="302.0" mnemonicParsing="false" onAction="#OnLogin_Login_BtnLogin" prefHeight="31.0" prefWidth="217.0" styleClass="btn" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Login" textFill="#dbdbdb" />
                   <Label layoutX="71.0" layoutY="341.0" prefHeight="17.0" prefWidth="100.0" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Password domenticata?" textFill="#2a8078">
                      <font>
                         <Font name="Gill Sans MT" size="10.0" />
@@ -38,7 +38,7 @@
                         <Font name="Gill Sans MT" size="10.0" />
                      </font>
                   </Hyperlink>
-                  <Button fx:id="Login_BtnReg" layoutX="56.0" layoutY="367.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" styleClass="btn" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Registrati" textFill="#2a827b" />
+                  <Button fx:id="Login_BtnReg" layoutX="56.0" layoutY="367.0" mnemonicParsing="false" onAction="#OnLogin_BtnRegClick" prefHeight="31.0" prefWidth="217.0" styleClass="btn" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Registrati" textFill="#2a827b" />
                   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="66.0" layoutY="458.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Design/Loghi/Logo.png" />

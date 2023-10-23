@@ -3,6 +3,9 @@ package wineshop.client;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import model.Utenti;
+import utilities.Costanti;
+import utilities.Response;
 
 import java.awt.event.ActionEvent;
 import java.util.regex.Matcher;
@@ -51,38 +54,7 @@ public class RegistrazioneController {
         this.requestController = controller;
     }
 
-    public static boolean checkCF(String input)
-    {
-        Pattern pattern = Pattern.compile("^[A-Z]{6}\\d{2}[A-Z]\\d{2}[A-Z]\\d{3}[A-Z]$");
-        Matcher matcher = pattern.matcher(input);
-
-        return matcher.matches();
-    }
-    private void PopUpCampiVuoti(String s)
-    {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Errore");
-        alert.setHeaderText("Si è verificato un errore");
-        alert.setContentText("Compilare tutti i campi." + s);
-        alert.showAndWait();
-    }
-    private void PopUpEmail()
-    {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Errore");
-        alert.setHeaderText("Si è verificato un errore");
-        alert.setContentText("L'email deve contenere una @ e non puo essere vuota");
-        alert.showAndWait();
-    }
-    private void PopUpPassword()
-    {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Errore");
-        alert.setHeaderText("Si è verificato un errore");
-        alert.setContentText("Le password non coincidono");
-        alert.showAndWait();
-    }
-    public void OnReg_BtnRegClick(ActionEvent event) throws Exception{
+    public void OnReg_BtnRegClick(ActionEvent event) throws Exception {
         String nome = this.Reg_Nome.getText();
         String cognome = this.Reg_Cog.getText();
         String indirizzo = this.Reg_Ind.getText();
@@ -132,5 +104,54 @@ public class RegistrazioneController {
             Reg_ConfPass.clear();
             return;
         }
+
+        try {
+            Utenti u = new Utenti(username, nome, cognome, cf, email, telefono, indirizzo, password, tipo);
+            Response r = this.requestController.makeRequest(Costanti.Registrazione, u);
+
+            if(r.getStatusCode() == Costanti.Successo)
+            {
+                System.out.println("Registrazione avvenuta con successo");
+            } else {
+                System.out.println("Registrazione fallita");
+            }
+        } catch (Exception e)
+        {
+            System.out.println(e);
+            throw new RuntimeException(e);
+        }
     }
+
+    public static boolean checkCF(String input)
+    {
+        Pattern pattern = Pattern.compile("^[A-Z]{6}\\d{2}[A-Z]\\d{2}[A-Z]\\d{3}[A-Z]$");
+        Matcher matcher = pattern.matcher(input);
+
+        return matcher.matches();
+    }
+    private void PopUpCampiVuoti(String s)
+    {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Errore");
+        alert.setHeaderText("Si è verificato un errore");
+        alert.setContentText("Compilare tutti i campi." + s);
+        alert.showAndWait();
+    }
+    private void PopUpEmail()
+    {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Errore");
+        alert.setHeaderText("Si è verificato un errore");
+        alert.setContentText("L'email deve contenere una @ e non puo essere vuota");
+        alert.showAndWait();
+    }
+    private void PopUpPassword()
+    {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Errore");
+        alert.setHeaderText("Si è verificato un errore");
+        alert.setContentText("Le password non coincidono");
+        alert.showAndWait();
+    }
+
 }

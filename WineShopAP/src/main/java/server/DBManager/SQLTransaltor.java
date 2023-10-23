@@ -36,17 +36,17 @@ public class SQLTransaltor {
             case Costanti.Login ->
             {
                 query += "SELECT * " +
-                         "FROM amministratore " +
-                         "WHERE Username = '" + ((Utenti) model).getUsername() + "' AND Passwrod = 'wineshop'; " +
+                         "FROM utenti " +
+                         "WHERE Username = '" + ((Utenti) model).getUsername() + "' AND Passwrod = '" + ((Utenti) model).getPassword() + "'; " +
                          "UPDATE utenti SET Online = 1 " +
                          "WHERE Username = '" + ((Utenti) model).getUsername() + "';";
             }
 
             case Costanti.Logout ->
             {
-                query += "UPDATE amministratori SET LastLogin = '" + LocalDateTime.now().format(dateTimeFormatter) + "' " +
+                query += "UPDATE utenti SET LastLogin = '" + LocalDateTime.now().format(dateTimeFormatter) + "' " +
                         "WHERE Username = '" + ((Utenti) model).getUsername() + "'; " +
-                        "UPDATE amministratori SET Online = 0 " +
+                        "UPDATE utenti SET Online = 0 " +
                         "WHERE Username = '" + ((Utenti) model).getUsername() + "';";
             }
 
@@ -123,6 +123,8 @@ public class SQLTransaltor {
             {
                 query += "SELECT * FROM";
             }*/
+            default ->
+                throw new RequestToSQLException();
         }
         return query;
     }

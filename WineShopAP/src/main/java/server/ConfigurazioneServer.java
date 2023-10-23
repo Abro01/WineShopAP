@@ -9,7 +9,7 @@ import java.io.FileReader;
 public class ConfigurazioneServer {
     private final String DBHost = "localhost";
     private final int ServerPort = 1234;
-    private final String DBUser ="root";
+    private final String DBUser = "root";
     private final String DBPassword = "";
     private final String DBName = "wine_shop";
     private final int DBPort = 3306;

@@ -54,6 +54,8 @@ public class LoginController {
 
         Response r = this.requestController.makeRequest(Costanti.Login, new Utenti(username, password));
 
+        System.out.println("Valore status code: " + r);
+
         if (r.getStatusCode() == Costanti.Successo)
         {
             System.out.println("Login avvenuto con successo");
@@ -125,7 +127,7 @@ public class LoginController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Registrazione.fxml"));
         Parent userGui = loader.load();
         Object controller = loader.getController();
-        Scene scene = new Scene(userGui);
+        Scene scene = new Scene(userGui, 346, 600);
         ((RegistrazioneController) controller).setRequestController(this.requestController);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
