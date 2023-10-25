@@ -5,11 +5,12 @@ import utilities.Inseribile;
 
 import java.io.Serializable;
 public class Produttori implements Inseribile, Rimovibile, Serializable{
-    private Enum ruolo;
-    private String nome, cognome, cf, email, telefono, indirizzo_azienda;
+    private int id;
+    private String nome, cognome, cf, email, telefono, indirizzo_azienda, tipo;
 
-    public Produttori(Enum ruolo, String nome, String cognome, String cf, String email, String telefono, String indirizzo_azienda) {
-        this.ruolo = ruolo;
+    public Produttori(int id, String tipo, String nome, String cognome, String cf, String email, String telefono, String indirizzo_azienda) {
+        this.id = id;
+        this.tipo = tipo;
         this.nome = nome;
         this.cognome = cognome;
         this.cf = cf;
@@ -18,12 +19,20 @@ public class Produttori implements Inseribile, Rimovibile, Serializable{
         this.indirizzo_azienda = indirizzo_azienda;
     }
 
-    public Enum getRuolo() {
-        return ruolo;
+    public int getId() {
+        return id;
     }
 
-    public void setRuolo(Enum ruolo) {
-        this.ruolo = ruolo;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String ruolo) {
+        this.tipo = ruolo;
     }
 
     public String getNome() {
@@ -86,7 +95,7 @@ public class Produttori implements Inseribile, Rimovibile, Serializable{
 
     @Override
     public String[] getValori() {
-        return new String[]{"'" + this.cf + "'", "'" + this.nome + "'", "'" + this.cognome + "'", "'" + this.email + "'", "'" + this.telefono + "'", "'" + this.indirizzo_azienda + "'", "'" + this.ruolo + "'"};
+        return new String[]{"'" + this.cf + "'", "'" + this.nome + "'", "'" + this.cognome + "'", "'" + this.email + "'", "'" + this.telefono + "'", "'" + this.indirizzo_azienda + "'", "'" + this.tipo + "'"};
     }
 
     @Override

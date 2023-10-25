@@ -16,7 +16,7 @@
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="white-bg" stylesheets="@../../Design/Design_LoginRegRecPass.css">
          <children>
-            <AnchorPane layoutX="13.0" layoutY="16.0" prefHeight="569.0" prefWidth="320.0">
+            <AnchorPane layoutX="13.0" layoutY="15.0" prefHeight="569.0" prefWidth="320.0">
                <children>
                   <Label layoutX="101.0" layoutY="101.0" text="Sign In Account" textFill="#e90000">
                      <font>
@@ -25,20 +25,20 @@
                   </Label>
                   <TextField fx:id="Login_Username" layoutX="56.0" layoutY="166.0" prefHeight="31.0" prefWidth="217.0" promptText="Username" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
                   <PasswordField fx:id="Login_Password" layoutX="56.0" layoutY="215.0" prefHeight="31.0" prefWidth="217.0" promptText="Password" stylesheets="@../../Design/Design_LoginRegRecPass.css" />
-                  <TextField layoutX="51.0" layoutY="176.0" prefHeight="31.0" prefWidth="217.0" promptText="Password" stylesheets="@../../Design/Design_LoginRegRecPass.css" visible="false" />
-                  <CheckBox fx:id="Login_Mostra" layoutX="57.0" layoutY="267.0" mnemonicParsing="false" styleClass="label" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Mostra Password" textFill="#2a827b" />
+                  <TextField fx:id="Login_MostraPassword" layoutX="56.0" layoutY="215.0" prefHeight="31.0" prefWidth="217.0" promptText="Password" visible="false" />
+                  <CheckBox fx:id="Login_Mostra" layoutX="57.0" layoutY="267.0" mnemonicParsing="false" onAction="#OnLogin_MostraClick" styleClass="label" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Mostra Password" textFill="#2a827b" />
                   <Button fx:id="Login_BtnLogin" layoutX="56.0" layoutY="302.0" mnemonicParsing="false" onAction="#OnLogin_Login_BtnLogin" prefHeight="31.0" prefWidth="217.0" styleClass="btn" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Login" textFill="#dbdbdb" />
-                  <Label layoutX="71.0" layoutY="341.0" prefHeight="17.0" prefWidth="100.0" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Password domenticata?" textFill="#2a8078">
-                     <font>
-                        <Font name="Gill Sans MT" size="10.0" />
-                     </font>
-                  </Label>
-                  <Hyperlink fx:id="Login_Link" layoutX="171.0" layoutY="340.0" styleClass="link" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Cambia password" textFill="#2d0000" underline="true">
+                  <Hyperlink fx:id="Login_Link" layoutX="171.0" layoutY="340.0" onAction="#OnLogin_LinkClick" styleClass="link" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Cambia password" textFill="#2d0000" underline="true">
                      <font>
                         <Font name="Gill Sans MT" size="10.0" />
                      </font>
                   </Hyperlink>
                   <Button fx:id="Login_BtnReg" layoutX="56.0" layoutY="367.0" mnemonicParsing="false" onAction="#OnLogin_BtnRegClick" prefHeight="31.0" prefWidth="217.0" styleClass="btn" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Registrati" textFill="#2a827b" />
+                  <Label layoutX="71.0" layoutY="341.0" prefHeight="17.0" prefWidth="100.0" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="Password domenticata?" textFill="#2a8078">
+                     <font>
+                        <Font name="Gill Sans MT" size="10.0" />
+                     </font>
+                  </Label>
                   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="66.0" layoutY="458.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Design/Loghi/Logo.png" />

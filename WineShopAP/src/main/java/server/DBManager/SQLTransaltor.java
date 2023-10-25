@@ -142,11 +142,16 @@ public class SQLTransaltor {
                 }
 
                 Map<String, String> uRes = queryResult.get(0);
-                Utenti user = new Utenti(uRes.get("username"), uRes.get("cf"), uRes.get("password"), uRes.get("tipo"));
+                Utenti user = new Utenti(Integer.parseInt(uRes.get("id")), uRes.get("username"), uRes.get("password"), uRes.get("tipo"));
 
                 response = new Response(Costanti.Successo, user);
                 this.UtenteLoggato = user;
 
+                break;
+
+            case Costanti.Logout:
+                response = new Response(Costanti.Successo, new PayloadVuoto("Utente disconnesso"));
+                this.UtenteLoggato = null;
                 break;
             default:
                 throw new SQLToResponseException();

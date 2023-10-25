@@ -33,6 +33,10 @@ public class LoginController {
 
     @FXML
     private TextField Login_Username;
+
+    @FXML
+    private TextField Login_MostraPassword;
+
     @FXML
     private Label lblLogin;
 
@@ -77,8 +81,7 @@ public class LoginController {
             String gui = "";
             UtenteLoggato = (Utenti) r.getPayload();
 
-            if (Objects.equals(UtenteLoggato.getTipo(), "cliente"))
-            {
+            if (Objects.equals(UtenteLoggato.getTipo(), "cliente")) {
                 gui = "HomeCliente.fxml";
             } else if (Objects.equals(UtenteLoggato.getTipo(), "amministratore")) {
                 gui = "HomeAmministratore.fxml";
@@ -100,6 +103,10 @@ public class LoginController {
             {
                 ((HomeAdminController) controller).setRequestController(this.requestController);
                 ((HomeAdminController) controller).setUtenteLoggato(UtenteLoggato);
+            } else if (Objects.equals(UtenteLoggato.getTipo(), "impiegato"))
+            {
+                ((HomeImpiegatoController) controller).setRequestController(this.requestController);
+                ((HomeImpiegatoController) controller).setUtenteLoggato(UtenteLoggato);
             }
 
             stage.setTitle(UtenteLoggato.getUsername().toUpperCase() + " - " + UtenteLoggato.getTipo().toUpperCase() + " - WineShop");
@@ -122,16 +129,38 @@ public class LoginController {
             }
         }
     }
-
     public void OnLogin_BtnRegClick(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Registrazione.fxml"));
-        Parent userGui = loader.load();
+        Parent RegGui = loader.load();
         Object controller = loader.getController();
-        Scene scene = new Scene(userGui, 346, 600);
+        Scene scene = new Scene(RegGui, 346, 600);
         ((RegistrazioneController) controller).setRequestController(this.requestController);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.show();
+    }
+    public void OnLogin_LinkClick(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AggiornaPassword.fxml"));
+        Parent AggPassGui = loader.load();
+        Object controller = loader.getController();
+        Scene scene = new Scene(AggPassGui, 346, 600);
+        ((AggiornaController) controller).setRequestController(this.requestController);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.show();
+    }
+
+    public void OnLogin_MostraClick() {
+        if (Login_Mostra.isSelected()) {
+            Login_MostraPassword.setText(Login_Password.getText());
+            Login_MostraPassword.setVisible(true);
+            Login_Password.setVisible(false);
+        } else {
+            Login_MostraPassword.setText(Login_Password.getText());
+            Login_MostraPassword.setVisible(false);
+            Login_Password.setVisible(true);
+        }
     }
 }

@@ -1,13 +1,18 @@
 package wineshop.client;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
+import javafx.event.ActionEvent;
 import model.Utenti;
 import utilities.Costanti;
 import utilities.Response;
 
-import java.awt.event.ActionEvent;
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -48,6 +53,13 @@ public class RegistrazioneController {
 
     @FXML
     private TextField Reg_Username;
+
+    @FXML
+    private TextField Reg_MostraConfPass;
+
+    @FXML
+    private TextField Reg_MostraPass;
+
     @FXML
     private ComboBox<String> Reg_SceltaTipo = new ComboBox<>();
     public void setRequestController(RequestController controller) {
@@ -122,6 +134,18 @@ public class RegistrazioneController {
         }
     }
 
+    public void OnReg_BtnLoginClick(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+        Parent LogGui = loader.load();
+        Object controller = loader.getController();
+        Scene scene = new Scene(LogGui, 346, 600);
+        ((LoginController) controller).setRequestController(this.requestController);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.show();
+    }
+
     public static boolean checkCF(String input)
     {
         Pattern pattern = Pattern.compile("^[A-Z]{6}\\d{2}[A-Z]\\d{2}[A-Z]\\d{3}[A-Z]$");
@@ -154,4 +178,24 @@ public class RegistrazioneController {
         alert.showAndWait();
     }
 
+    public void OnReg_MostraClick(){
+        if(Reg_Mostra.isSelected())
+        {
+            Reg_MostraPass.setText(Reg_Password.getText());
+            Reg_MostraPass.setVisible(true);
+            Reg_Password.setVisible(false);
+
+            Reg_MostraConfPass.setText(Reg_ConfPass.getText());
+            Reg_MostraConfPass.setVisible(true);
+            Reg_ConfPass.setVisible(false);
+        } else {
+            Reg_Password.setText(Reg_MostraPass.getText());
+            Reg_MostraPass.setVisible(false);
+            Reg_Password.setVisible(true);
+
+            Reg_ConfPass.setText(Reg_MostraConfPass.getText());
+            Reg_MostraConfPass.setVisible(false);
+            Reg_ConfPass.setVisible(true);
+        }
+    }
 }
