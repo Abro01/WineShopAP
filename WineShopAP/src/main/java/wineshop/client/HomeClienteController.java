@@ -36,7 +36,23 @@ public class HomeClienteController {
         System.out.println("Tentativo di logout");
 
         Response rs;
-        //rs = this.requestController.makeRequest();
+        rs = this.requestController.makeRequest(Costanti.Logout, UtenteLoggato);
+
+        if(rs.getStatusCode() != Costanti.Successo)
+        {
+            return;
+        }
+        setUtenteLoggato(null);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+        Parent LoginGui = loader.load();
+        Object controller = loader.getController();
+        Scene scene = new Scene(LoginGui, 346, 600);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        ((LoginController) controller).setRequestController(this.requestController);
+        ((LoginController) controller).setUtenteLoggato(UtenteLoggato);
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.show();
     }
     public void initialize() {
     }

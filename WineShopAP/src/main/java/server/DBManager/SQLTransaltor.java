@@ -31,6 +31,8 @@ public class SQLTransaltor {
         String query = "";
         Object model = request.getPayload();
 
+        this.UltimaRichiesta = request.getHeader();
+
         switch (request.getHeader())
         {
             case Costanti.Login ->

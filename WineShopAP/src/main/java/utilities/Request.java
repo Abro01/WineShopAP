@@ -18,19 +18,17 @@ public class Request implements Serializable{
 
     public Request(int header, Object payload) {
         this.header = header;
-        this.payload = payload;
         this.payloadType = payload.getClass();
+        this.payload = payload;
     }
 
     public int getHeader() {
         return header;
     }
-
-    public Class<?> getPayloadType() {
-        return payloadType;
-    }
-
     public Object getPayload() {
         return payload;
+    }
+    public Class<?> getPayloadType() {
+        return payloadType;
     }
 }

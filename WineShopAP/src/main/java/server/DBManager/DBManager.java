@@ -16,10 +16,10 @@ public class DBManager {
     }
 
     private List<Map<String, String>> wrapQueryResult(ResultSet rs) throws SQLException {
-        List<Map<String, String>> tabella = new ArrayList<>();
+        List<Map<String, String>> tabella = new ArrayList<Map<String, String>>();
         ResultSetMetaData meta = rs.getMetaData();
         while (rs.next()){
-            Map<String, String> map = new HashMap<>();
+            Map<String, String> map = new HashMap<String, String>();
             for(int i = 1; i <= meta.getColumnCount(); i++)
             {
                 String key = meta.getColumnName(i);

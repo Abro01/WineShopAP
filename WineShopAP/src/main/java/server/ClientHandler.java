@@ -23,7 +23,6 @@ public class ClientHandler implements Runnable{
         this.dbManager = new DBManager(conf.getDBUser(), conf.getDBPassword());
     }
 
-    @Override
     public void run() {
         ObjectInputStream in;
         ObjectOutputStream out;
@@ -37,7 +36,7 @@ public class ClientHandler implements Runnable{
 
             try {
                 this.socket.close();
-            } catch (IOException ex)
+            } catch (IOException ie)
             {
                 System.out.println("Errore riscontrato nella chiusura del socket");
             }
@@ -61,14 +60,14 @@ public class ClientHandler implements Runnable{
 
                     List<Map<String, String>> queryResult = this.dbManager.executeSQLStatement(query);
                     response = this.transaltor.sqlToResponse(queryResult);
-                }catch (RequestToSQLException e)
+                }catch (RequestToSQLException rtse)
                 {
-                    e.printStackTrace();
+                    rtse.printStackTrace();
                     response = new Response(Costanti.RichiestaErrata, new PayloadVuoto("Richiesta errata"));
-                }catch (SQLToResponseException e)
+                }catch (SQLToResponseException stre)
                 {
-                    e.printStackTrace();
-                    response = new Response(Costanti.ErroriServer, new PayloadVuoto("Errori Interni al server"));
+                    stre.printStackTrace();
+                    response = new Response(Costanti.ErroriServer, new PayloadVuoto("Errori interni al server"));
                 }
                 out.writeObject(response);
             }catch (Exception e)
@@ -80,7 +79,7 @@ public class ClientHandler implements Runnable{
         }
         try {
             socket.close();
-        }catch (IOException e)
+        }catch (IOException ie)
         {
             System.out.println("Errore riscontrato nella chiusura del socket");
         }

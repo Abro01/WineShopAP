@@ -1,5 +1,7 @@
 package wineshop.client;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -13,10 +15,12 @@ import utilities.Costanti;
 import utilities.Response;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RegistrazioneController {
+public class RegistrazioneController implements Initializable {
     private RequestController requestController;
     @FXML
     private Button Reg_BtnLogin;
@@ -61,7 +65,7 @@ public class RegistrazioneController {
     private TextField Reg_MostraPass;
 
     @FXML
-    private ComboBox<String> Reg_SceltaTipo = new ComboBox<>();
+    private ComboBox Reg_SceltaTipo;
     public void setRequestController(RequestController controller) {
         this.requestController = controller;
     }
@@ -73,10 +77,12 @@ public class RegistrazioneController {
         String telefono = this.Reg_Tel.getText();
         String cf = this.Reg_CF.getText();
         String email = this.Reg_Email.getText();
-        String tipo = this.Reg_SceltaTipo.getValue();
+        String tipo = this.Reg_SceltaTipo.getSelectionModel().getSelectedItem().toString();
         String username = this.Reg_Username.getText();
         String password = this.Reg_Password.getText();
         String cof_password = this.Reg_ConfPass.getText();
+
+
 
         if(username.isEmpty() || nome.isEmpty() || cognome.isEmpty() || indirizzo.isEmpty() || telefono.isEmpty() || cf.isEmpty() || email.isEmpty() || tipo.isEmpty() || password.isEmpty() || cof_password.isEmpty())
         {
@@ -134,6 +140,11 @@ public class RegistrazioneController {
         }
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        ObservableList<String> options = FXCollections.observableArrayList("Amministratore", "Impiegato", "Cliente");
+        Reg_SceltaTipo.setItems(options);
+    }
     public void OnReg_BtnLoginClick(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
         Parent LogGui = loader.load();

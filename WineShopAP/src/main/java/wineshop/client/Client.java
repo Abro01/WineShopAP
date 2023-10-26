@@ -73,7 +73,7 @@ public class Client extends Application{
             controller.setRequestController(requestController);
             Scene scene = new Scene(root, 346, 600);
 
-            //primaryStage.getIcons().add(new Image("C:/Users/andre/OneDrive/Documenti/GitHub/WineShopAP/WineShopAP/src/main/resources/Design/Loghi/Logo.png"));
+            primaryStage.getIcons().add(new Image("C:/Users/andre/OneDrive/Documenti/GitHub/WineShopAP/WineShopAP/src/main/resources/Design/Loghi/Logo_Calice.png"));
 
             final Socket fSock = socket;
             primaryStage.setOnCloseRequest(event -> {

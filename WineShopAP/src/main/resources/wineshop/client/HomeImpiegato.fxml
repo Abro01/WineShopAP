@@ -10,7 +10,7 @@
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane prefHeight="359.0" prefWidth="600.0">
+      <AnchorPane prefHeight="359.0" prefWidth="600.0" styleClass="white-bg" stylesheets="@../../Design/Design_LoginRegRecPass.css">
          <children>
             <AnchorPane layoutX="11.0" layoutY="12.0" prefHeight="375.0" prefWidth="577.0">
                <children>
@@ -24,7 +24,7 @@
                         <Font name="Gill Sans MT" size="20.0" />
                      </font>
                   </Label>
-                  <Button layoutX="258.0" layoutY="78.0" mnemonicParsing="false" styleClass="btn" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="logout" />
+                  <Button fx:id="HI_BtnLogout" layoutX="258.0" layoutY="78.0" mnemonicParsing="false" styleClass="btn" stylesheets="@../../Design/Design_LoginRegRecPass.css" text="logout" />
                </children>
             </AnchorPane>
          </children>
