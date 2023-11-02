@@ -10,7 +10,6 @@ public class Server {
 
     public static void main(String[] args){
         ConfigurazioneServer conf = new ConfigurazioneServer("C:/Users/andre/OneDrive/Documenti/GitHub/WineShopAP/WineShopAP/src/main/java/server/ServerConfig.json");
-        ServerSocket server;
 
         System.out.println(conf + "\n");
 
@@ -21,7 +20,7 @@ public class Server {
             conn = DriverManager.getConnection(url, user, psw);
 
             System.out.println("Database connesso\n");
-            server = new ServerSocket(conf.getServerPort());
+            ServerSocket server = new ServerSocket(conf.getServerPort());
             server.setReuseAddress(true);
             System.out.println("Server in ascolto sulla porta: " + conf.getServerPort());
 

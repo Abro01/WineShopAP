@@ -16,6 +16,8 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class LoginController {
+    private RequestController requestController;
+    private Utenti UtenteLoggato;
     @FXML
     private Button Login_BtnLogin;
 
@@ -40,9 +42,6 @@ public class LoginController {
     @FXML
     private Label lblLogin;
 
-    private RequestController requestController;
-    private Utenti UtenteLoggato;
-
     public void setRequestController(RequestController controller) {
         this.requestController = controller;
     }
@@ -56,7 +55,7 @@ public class LoginController {
         String password = this.Login_Password.getText();
         this.lblLogin.setText("");
 
-        Response r = this.requestController.makeRequest(Costanti.Login, new Utenti(username, password));
+        Response r  = this.requestController.makeRequest(Costanti.Login, new Utenti(username, password));
 
         System.out.println("Valore status code: " + r);
 

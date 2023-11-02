@@ -24,7 +24,7 @@ public class Client extends Application{
         try {
             Socket socket = null;
             String ip = "localhost";
-            int port = 1234;
+            int port = 9876;
 
             if (getParameters().getRaw().size() == 2)
             {
